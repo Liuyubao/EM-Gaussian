@@ -80,7 +80,7 @@ while current_iter < args.iterations:
 
 ## 3.Tied and full covariance
 
-<img src="plots/Tied_and_Full/Figure_full_k2_iteration30.png" width="500">
+<img src="plots/Tied_and_Full/Figure_full_k2_iteration30.png" width="700">
 
 Tied: (2,2) all used the same tied covariance
 Full: (args.cluster_num,2,2) k different covariance
@@ -109,7 +109,7 @@ I tried tied and full on the data and get quiet different results. Full cov are 
 
 ## 5.Logic for dev data
 
-<img src="plots/Different_K/Figure_K_3.png" width="500">
+<img src="plots/Different_K/Figure_K_3.png" width="700">
 
 	5.1 Inside the train_model function, I only focus on the best iteration. I kept track of each iteration and compare the average likelihood finally return the best one.
 
