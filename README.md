@@ -80,7 +80,7 @@ while current_iter < args.iterations:
 
 ## 3.Tied and full covariance
 
-<img src="plots/Tied_and_Full/Figure_full_k2_iteration30.png" width="250">
+<img src="plots/Tied_and_Full/Figure_full_k2_iteration30.png" width="500">
 
 Tied: (2,2) all used the same tied covariance
 Full: (args.cluster_num,2,2) k different covariance
@@ -109,6 +109,8 @@ I tried tied and full on the data and get quiet different results. Full cov are 
 
 ## 5.Logic for dev data
 
+<img src="plots/Different_K/Figure_K_3.png" width="500">
+
 	5.1 Inside the train_model function, I only focus on the best iteration. I kept track of each iteration and compare the average likelihood finally return the best one.
 
 	5.2 What's more, I also iterate K (number of clusters) and find the best hyperparameters set using different data. Here I run 30 iteration for each K and record the best ll on dev and final ll on training data. Every K run by 10 times to choose the best to avoid the influences of initialization. 
@@ -124,6 +126,9 @@ I tried tied and full on the data and get quiet different results. Full cov are 
 
 
 ## 6.Likelihood changing with iterations
+
+
+<img src="plots/Different_iterations/Figure_K2_iteration30.png" width="500">
 
 I run 30 iterations based on gaussian_smoketest_clusters.txt and get the result as follows. I also plotted them out in the graph. We can see that only after 13 iterations, the log likelihood changes very little after that. Because after rough 13 iterations, the data already converged.
 
