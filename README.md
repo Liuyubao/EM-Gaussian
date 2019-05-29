@@ -4,20 +4,20 @@
 
 ## 1.What I did?
 
-  1.1 Implemented the model initilization
-  1.2 Implemented both tied and full covariance
-  1.3 Implemented the logic of E and M step
-  1.4 Declared and implemented a function for computing Prob given the whole data matrix
-  1.5 Implemented logic using dev data to choose best model
-  1.6 Run different set of hyperparameters to choose best K(number of clusters) and I(number of iterations) for the data given
-  1.7 Wrote a function to plot the trend of average likelihood based on different input
-  1.8 Wrote a function to visualize the cluster
+	  1.1 Implemented the model initilization
+	  1.2 Implemented both tied and full covariance
+	  1.3 Implemented the logic of E and M step
+	  1.4 Declared and implemented a function for computing Prob given the whole data matrix
+	  1.5 Implemented logic using dev data to choose best model
+	  1.6 Run different set of hyperparameters to choose best K(number of clusters) and I(number of iterations) for the data given
+	  1.7 Wrote a function to plot the trend of average likelihood based on different input
+	  1.8 Wrote a function to visualize the cluster
 
 ## 2.Implemented the model initilization
 
-  For lambdas: equal weights
-  For mus: randomly choose K data as the mus
-  For sigmas: just compute all the data's initial cov
+	  For lambdas: equal weights
+	  For mus: randomly choose K data as the mus
+	  For sigmas: just compute all the data's initial cov
 
   The initialization is also important. Normally we choose the mus that not that close to each other.
 
@@ -47,22 +47,22 @@ I tried tied and full on the data and get quiet different results. Full cov are 
 
 ## 4.Declared and implemented a Prob computing function
 
-  Here all my computation are based on matrix. So I wrothe another function for computing Prob given the whole data matrix. It is also based on scipy.stats.multivariate_normal.
+  	Here all my computation are based on matrix. So I wrothe another function for computing Prob given the whole data matrix. It is also based on scipy.stats.multivariate_normal.
 
 ## 5.Logic for dev data
 
-5.1 Inside the train_model function, I only focus on the best iteration. I kept track of each iteration and compare the average likelihood finally return the best one.
+	5.1 Inside the train_model function, I only focus on the best iteration. I kept track of each iteration and compare the average likelihood finally return the best one.
 
-5.2 What's more, I also iterate K (number of clusters) and find the best hyperparameters set using different data. Here I run 30 iteration for each K and record the best ll on dev and final ll on training data. Every K run by 10 times to choose the best to avoid the influences of initialization. 
-	Average log likelihood when K = 2: Train LL: -4.552393488272517		Dev LL: -4.652551176276237
-	Average log likelihood when K = 3: Train LL: -4.4555812491750695	Dev LL: -4.559940625476985
-	Average log likelihood when K = 4: Train LL: -4.356124260302845		Dev LL: -4.333912957848705
-	Average log likelihood when K = 5: Train LL: -4.3572362793207615	Dev LL: -4.319924483847427
-	Average log likelihood when K = 6: Train LL: -4.351551860156118		Dev LL: -4.3399043555224095
-	Average log likelihood when K = 7: Train LL: -4.3502621987954315	Dev LL: -4.334131138057317
-	Average log likelihood when K = 10: Train LL: -4.348944327376958	Dev LL: -4.326733513037062
+	5.2 What's more, I also iterate K (number of clusters) and find the best hyperparameters set using different data. Here I run 30 iteration for each K and record the best ll on dev and final ll on training data. Every K run by 10 times to choose the best to avoid the influences of initialization. 
+		Average log likelihood when K = 2: Train LL: -4.552393488272517		Dev LL: -4.652551176276237
+		Average log likelihood when K = 3: Train LL: -4.4555812491750695	Dev LL: -4.559940625476985
+		Average log likelihood when K = 4: Train LL: -4.356124260302845		Dev LL: -4.333912957848705
+		Average log likelihood when K = 5: Train LL: -4.3572362793207615	Dev LL: -4.319924483847427
+		Average log likelihood when K = 6: Train LL: -4.351551860156118		Dev LL: -4.3399043555224095
+		Average log likelihood when K = 7: Train LL: -4.3502621987954315	Dev LL: -4.334131138057317
+		Average log likelihood when K = 10: Train LL: -4.348944327376958	Dev LL: -4.326733513037062
 
-From the log likelihood running on dev data, the best K is 5 and the I is 25.
+	From the log likelihood running on dev data, the best K is 5 and the I is 25.
 
 
 ## 6.Likelihood changing with iterations
