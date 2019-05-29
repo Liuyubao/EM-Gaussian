@@ -80,6 +80,8 @@ while current_iter < args.iterations:
 
 ## 3.Tied and full covariance
 
+<img src="plots/Tied_and_Full/Figure_full_k2_iteration30.png" width="250">
+
 Tied: (2,2) all used the same tied covariance
 Full: (args.cluster_num,2,2) k different covariance
 
