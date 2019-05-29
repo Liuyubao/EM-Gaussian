@@ -4,17 +4,13 @@
 ```python
 
 while current_iter < args.iterations:
-        
         """ E step """
-
         for k in range(args.cluster_num):
             if not args.tied:
                 P_Z_given_X[:, k] = lambdas[k] * N_X_given_muk_sigmak(train_xs, mus[k], sigmas[k])
             else:
                 P_Z_given_X[:, k] = lambdas[k] * N_X_given_muk_sigmak(train_xs, mus[k], sigmas)
 
-
-        
         ## Normalize to make the matrix row stochastic
         P_Z_given_X = (P_Z_given_X.T / np.sum(P_Z_given_X, axis = 1)).T
         ## The number of datapoints belonging to each cluster           
@@ -34,7 +30,6 @@ while current_iter < args.iterations:
                 total += temp2
             mus[k] = total / Num_ks[k]
             x_minus_mus = np.matrix(train_xs - mus[k])
-
 
             # sigmas updata
             if not args.tied:
@@ -57,13 +52,6 @@ while current_iter < args.iterations:
                 best_model = current_model
                 best_iter = current_iter
         print("iter %s train log_likelihood: %s" % (str(current_iter), str(current_log_likelihood)))
-
-        
-        # # check for convergence
-        # if len(log_likelihoods) < 2:
-        #     continue
-        # if np.abs(current_log_likelihood - log_likelihoods[-2]) < 0.00001:
-        #     break
 
 
 ```
